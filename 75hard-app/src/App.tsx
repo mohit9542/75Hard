@@ -63,8 +63,7 @@ export default function App() {
 
   return (
     <div
-      className="min-h-screen min-h-[100dvh] flex flex-col"
-      style={{ background: 'linear-gradient(180deg, #07070F 0%, #0D0D1A 50%, #07070F 100%)' }}
+      className="flex flex-col" style={{ height: '100dvh', background: 'linear-gradient(180deg, #07070F 0%, #0D0D1A 50%, #07070F 100%)', overflow: 'hidden' }}
     >
       {/* Ambient background particles */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
@@ -191,7 +190,7 @@ export default function App() {
       )}
 
       {/* Main scrollable content */}
-      <main className="flex-1 overflow-y-auto no-bounce">
+      <main className="flex-1 overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch', overscrollBehavior: 'contain' }}>
         <div className="max-w-2xl mx-auto px-4 py-4 pb-28">
 
           {/* Stats Header */}
