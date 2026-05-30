@@ -8,7 +8,7 @@ interface Props {
   todayKey: string;
 }
 
-export const HistoryPanel: React.FC<Props> = ({ records, todayKey }) => {
+export function HistoryPanel({ records, todayKey }: Props) {
   const [expanded, setExpanded] = useState(false);
 
   const sortedDates = Object.keys(records)
@@ -38,7 +38,7 @@ export const HistoryPanel: React.FC<Props> = ({ records, todayKey }) => {
         <div className="px-4 pb-4 space-y-2">
           {sortedDates.map(dateStr => {
             const rec = records[dateStr];
-            const completedTasks = rec.tasks.filter(t => t.completed).length;
+            const completedTasks = rec.tasks.filter((t: { completed: boolean }) => t.completed).length;
             const total = rec.tasks.length + 1;
             const done = completedTasks + (rec.sideQuest.completed ? 1 : 0);
             const pct = Math.round((done / total) * 100);

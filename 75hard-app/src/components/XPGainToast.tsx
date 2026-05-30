@@ -1,12 +1,8 @@
 
 import { Zap } from 'lucide-react';
 
-interface Props {
-  amount: number;
-  onDone: () => void;
-}
 
-export const XPGainToast: React.FC<Props> = ({ amount }) => {
+export function XPGainToast({ amount }: { amount: number }) {
   return (
     <div
       className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm pointer-events-none animate-xp-gain"

@@ -2,9 +2,6 @@
 import type { UserStats } from '../types';
 import { Zap } from 'lucide-react';
 
-interface Props {
-  stats: UserStats;
-}
 
 const LEVEL_TITLES: Record<number, string> = {
   1: 'Novice',
@@ -24,7 +21,7 @@ function getLevelTitle(level: number): string {
   return LEVEL_TITLES[level] || 'Novice';
 }
 
-export const XPBar: React.FC<Props> = ({ stats }) => {
+export function XPBar({ stats }: { stats: UserStats }) {
   const percent = Math.min(100, Math.round((stats.currentLevelXP / stats.xpToNextLevel) * 100));
 
   return (

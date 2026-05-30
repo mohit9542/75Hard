@@ -3,11 +3,8 @@ import type { UserStats } from '../types';
 import { ACHIEVEMENTS } from '../data/quests';
 import { Trophy, Lock, ChevronDown, ChevronUp } from 'lucide-react';
 
-interface Props {
-  stats: UserStats;
-}
 
-export const AchievementsPanel: React.FC<Props> = ({ stats }) => {
+export function AchievementsPanel({ stats }: { stats: UserStats }) {
   const [expanded, setExpanded] = useState(false);
   const unlocked = stats.unlockedAchievements;
 

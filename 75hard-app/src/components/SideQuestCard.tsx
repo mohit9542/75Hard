@@ -46,7 +46,7 @@ const RARITY_STYLES = {
   },
 };
 
-export const SideQuestCard: React.FC<Props> = ({ sideQuest, onToggle }) => {
+export function SideQuestCard({ sideQuest, onToggle }: Props) {
   const [showXP, setShowXP] = useState(false);
   const style = RARITY_STYLES[sideQuest.rarity];
 
