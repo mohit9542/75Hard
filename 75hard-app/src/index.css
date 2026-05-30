@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-quest-darker text-white font-body;
+    min-height: 100vh;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #6644FF #12122A;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #12122A;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #6644FF;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  .quest-panel {
+    @apply bg-quest-panel border border-quest-border rounded-lg relative overflow-hidden;
+  }
+
+  .quest-panel::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background: linear-gradient(135deg, rgba(102,68,255,0.05) 0%, transparent 50%);
+  }
+
+  .xp-bar {
+    @apply relative h-3 rounded-full overflow-hidden;
+    background: rgba(102, 68, 255, 0.15);
+  }
+
+  .xp-bar-fill {
+    @apply h-full rounded-full transition-all duration-700 ease-out;
+    background: linear-gradient(90deg, #6644FF, #00FF88);
+    box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-lg font-semibold text-sm tracking-wider transition-all duration-200;
+    background: linear-gradient(135deg, #6644FF, #4422CC);
+    box-shadow: 0 4px 15px rgba(102, 68, 255, 0.4);
+  }
+
+  .btn-primary:hover {
+    @apply scale-105;
+    box-shadow: 0 6px 25px rgba(102, 68, 255, 0.6);
+  }
+
+  .btn-primary:active {
+    @apply scale-95;
+  }
+
+  .shimmer-text {
+    background: linear-gradient(90deg, #FFD700, #FFF, #FFD700, #FFA500, #FFD700);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    @apply animate-shimmer;
+  }
+
+  .category-icon-ring {
+    @apply w-12 h-12 rounded-full flex items-center justify-center text-xl flex-shrink-0;
+    box-shadow: 0 0 12px currentColor;
+  }
+
+  .quest-checkbox {
+    @apply w-6 h-6 rounded border-2 flex items-center justify-center cursor-pointer transition-all duration-200 flex-shrink-0;
+  }
+
+  .quest-checkbox:not(.checked) {
+    @apply border-quest-border bg-transparent hover:border-quest-glow;
+  }
+
+  .quest-checkbox.checked {
+    @apply border-transparent;
+    background: linear-gradient(135deg, #00FF88, #00CC66);
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    @apply animate-check-pop;
+  }
+
+  .achievement-badge {
+    @apply px-3 py-1 rounded-full text-xs font-semibold border;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 165, 0, 0.1));
+    border-color: rgba(255, 215, 0, 0.4);
+    color: #FFD700;
+  }
+}
+
+@layer utilities {
+  .text-glow-purple {
+    text-shadow: 0 0 10px rgba(102, 68, 255, 0.8), 0 0 20px rgba(102, 68, 255, 0.4);
+  }
+
+  .text-glow-green {
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.8), 0 0 20px rgba(0, 255, 136, 0.4);
+  }
+
+  .text-glow-gold {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.4);
+  }
+
+  .border-glow-purple {
+    box-shadow: 0 0 0 1px rgba(102, 68, 255, 0.5), 0 0 20px rgba(102, 68, 255, 0.2);
+  }
+
+  .border-glow-green {
+    box-shadow: 0 0 0 1px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.2);
+  }
+
+  .border-glow-gold {
+    box-shadow: 0 0 0 1px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.2);
+  }
+}
