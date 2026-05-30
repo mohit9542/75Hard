@@ -3,8 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Mobile viewport — prevents unwanted zoom, respects safe areas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- iOS / Safari PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="75 HARD" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+    <!-- Theme color (Android Chrome address bar) -->
+    <meta name="theme-color" content="#0D0D1A" />
+
+    <!-- Description for install prompts -->
+    <meta name="description" content="Gamified daily tracker for the 75 Hard challenge — earn XP, level up, complete quests." />
+
     <title>75 HARD QUEST — Level Up Your Life</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">

@@ -8,7 +8,7 @@ interface Props {
   todayPercent: number;
 }
 
-export const StatsHeader: React.FC<Props> = ({ stats, todayPercent }) => {
+export function StatsHeader({ stats, todayPercent }: Props) {
   const day75Display = Math.min(stats.day75Progress, 75);
 
   return (
@@ -147,15 +147,17 @@ interface StatPillProps {
   glow?: boolean;
 }
 
-const StatPill: React.FC<StatPillProps> = ({ icon, label, value, color, glow }) => (
-  <div
-    className={`flex items-center gap-2 bg-white/5 rounded-lg px-3 py-2 border border-white/10 transition-all ${glow ? 'border-orange-500/40' : ''}`}
-    style={glow ? { boxShadow: '0 0 10px rgba(255, 120, 0, 0.3)' } : {}}
-  >
-    {icon}
-    <div className="min-w-0">
-      <div className="text-[10px] text-gray-500 uppercase tracking-wider leading-none">{label}</div>
-      <div className={`text-sm font-bold ${color} leading-tight mt-0.5`}>{value}</div>
+function StatPill({ icon, label, value, color, glow }: StatPillProps) {
+  return (
+    <div
+      className={`flex items-center gap-2 bg-white/5 rounded-lg px-3 py-2 border border-white/10 transition-all ${glow ? 'border-orange-500/40' : ''}`}
+      style={glow ? { boxShadow: '0 0 10px rgba(255, 120, 0, 0.3)' } : {}}
+    >
+      {icon}
+      <div className="min-w-0">
+        <div className="text-[10px] text-gray-500 uppercase tracking-wider leading-none">{label}</div>
+        <div className={`text-sm font-bold ${color} leading-tight mt-0.5`}>{value}</div>
+      </div>
     </div>
-  </div>
-);
+  );
+}

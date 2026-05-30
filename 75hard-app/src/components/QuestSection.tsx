@@ -10,7 +10,7 @@ interface Props {
   onToggleTask: (taskId: string) => void;
 }
 
-export const QuestSection: React.FC<Props> = ({ category, tasks, onToggleTask }) => {
+export function QuestSection({ category, tasks, onToggleTask }: Props) {
   const [collapsed, setCollapsed] = useState(false);
   const config = CATEGORY_CONFIG[category];
   const completedCount = tasks.filter(t => t.completed).length;

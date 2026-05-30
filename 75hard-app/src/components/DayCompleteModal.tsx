@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useEffect } from 'react';
 import type { DailyRecord, UserStats } from '../types';
 import { Trophy, Zap, Star, X } from 'lucide-react';
@@ -8,7 +9,7 @@ interface Props {
   onClose: () => void;
 }
 
-export const DayCompleteModal: React.FC<Props> = ({ record, stats, onClose }) => {
+export function DayCompleteModal({ record, stats, onClose }: Props) {
   useEffect(() => {
     const timer = setTimeout(onClose, 8000);
     return () => clearTimeout(timer);
@@ -115,12 +116,14 @@ export const DayCompleteModal: React.FC<Props> = ({ record, stats, onClose }) =>
   );
 };
 
-const StatBox: React.FC<{ icon: React.ReactNode; label: string; value: string; color: string }> = ({
-  icon, label, value, color,
-}) => (
-  <div className="bg-white/5 rounded-lg p-3 border border-white/10">
-    <div className="flex items-center justify-center mb-1">{icon}</div>
-    <div className={`text-base font-bold ${color}`}>{value}</div>
-    <div className="text-[10px] text-gray-500 uppercase tracking-wider">{label}</div>
-  </div>
-);
+function StatBox({ icon, label, value, color }: {
+  icon: React.ReactNode; label: string; value: string; color: string
+}) {
+  return (
+    <div className="bg-white/5 rounded-lg p-3 border border-white/10">
+      <div className="flex items-center justify-center mb-1">{icon}</div>
+      <div className={`text-base font-bold ${color}`}>{value}</div>
+      <div className="text-[10px] text-gray-500 uppercase tracking-wider">{label}</div>
+    </div>
+  );
+}

@@ -3,18 +3,31 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    /* Respect safe areas on notched phones */
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+
   body {
     @apply bg-quest-darker text-white font-body;
     min-height: 100vh;
+    min-height: 100dvh; /* dynamic viewport height for mobile browsers */
+    /* Disable overscroll bounce on iOS */
+    overscroll-behavior-y: none;
+    /* Prevent text size adjustment on orientation change */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
+  /* Prevent tap highlight flash on mobile */
   * {
+    -webkit-tap-highlight-color: transparent;
     scrollbar-width: thin;
     scrollbar-color: #6644FF #12122A;
   }
 
   *::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
   }
 
   *::-webkit-scrollbar-track {
@@ -29,7 +42,7 @@
 
 @layer components {
   .quest-panel {
-    @apply bg-quest-panel border border-quest-border rounded-lg relative overflow-hidden;
+    @apply bg-quest-panel border border-quest-border rounded-xl relative overflow-hidden;
   }
 
   .quest-panel::before {
@@ -50,14 +63,11 @@
   }
 
   .btn-primary {
-    @apply px-6 py-3 rounded-lg font-semibold text-sm tracking-wider transition-all duration-200;
+    /* min 48px touch target */
+    @apply px-6 py-3 rounded-xl font-semibold text-sm tracking-wider transition-all duration-200 min-h-[48px];
     background: linear-gradient(135deg, #6644FF, #4422CC);
     box-shadow: 0 4px 15px rgba(102, 68, 255, 0.4);
-  }
-
-  .btn-primary:hover {
-    @apply scale-105;
-    box-shadow: 0 6px 25px rgba(102, 68, 255, 0.6);
+    touch-action: manipulation;
   }
 
   .btn-primary:active {
@@ -73,17 +83,14 @@
     @apply animate-shimmer;
   }
 
-  .category-icon-ring {
-    @apply w-12 h-12 rounded-full flex items-center justify-center text-xl flex-shrink-0;
-    box-shadow: 0 0 12px currentColor;
-  }
-
   .quest-checkbox {
+    /* 44px touch target min on mobile, visually 24px */
     @apply w-6 h-6 rounded border-2 flex items-center justify-center cursor-pointer transition-all duration-200 flex-shrink-0;
+    touch-action: manipulation;
   }
 
   .quest-checkbox:not(.checked) {
-    @apply border-quest-border bg-transparent hover:border-quest-glow;
+    @apply border-quest-border bg-transparent;
   }
 
   .quest-checkbox.checked {
@@ -98,6 +105,15 @@
     background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 165, 0, 0.1));
     border-color: rgba(255, 215, 0, 0.4);
     color: #FFD700;
+  }
+
+  /* Larger touch target wrapper for small interactive elements */
+  .touch-target {
+    @apply relative;
+  }
+  .touch-target::after {
+    content: '';
+    @apply absolute -inset-2;
   }
 }
 
@@ -124,5 +140,10 @@
 
   .border-glow-gold {
     box-shadow: 0 0 0 1px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.2);
+  }
+
+  /* Prevent rubber-band bounce on iOS scroll containers */
+  .no-bounce {
+    overscroll-behavior: contain;
   }
 }
